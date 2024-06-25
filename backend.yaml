@@ -57,7 +57,7 @@
       ansible.builtin.command: dnf install mysql -y
     
     - name: Load Schema
-      ansible.builtin.command: mysql -h mysql.bigmatrix.in -uroot -pExpenseApp@1 < /app/schema/backend.sql
+      ansible.builtin.shell: mysql -h mysql.bigmatrix.in -uroot -pExpenseApp@1 < /app/schema/backend.sql
 
     - name: Restart backend 
       ansible.builtin.service:
