@@ -28,6 +28,7 @@
       ansible.builtin.unarchive:
         src: /tmp
         dest: /tmp/frontend.zip
+        remote_src: yes
 
     - name: copying service
       ansible.builtin.copy:
