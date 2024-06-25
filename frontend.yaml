@@ -15,18 +15,21 @@
     
     - name: remove html 
       ansible.builtin.command: rm -rf /usr/share/nginx/html/*
-    
-    - name: Download the frontend
-      ansible.builtin.get_url:
-        url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-        dest: /usr/share/nginx/html
+  
 
-    - name: change directory 
-      ansible.builtin.command: cd /usr/share/nginx/html
+    - name: remove old directory 
+      ansible.builtin.file: 
+        path: /usr/share/nginx/html
+        state: absent
+
+    - name: add directory 
+      ansible.builtin.file: 
+        path: /usr/share/nginx/html
+        state: directory
 
     - name: unzip 
       ansible.builtin.unarchive:
-        src: /usr/share/nginx/html
+        src: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
         dest: /usr/share/nginx/html
         remote_src: yes
 
