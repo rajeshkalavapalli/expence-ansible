@@ -29,8 +29,8 @@
 
     - name: unzipping 
       ansible.builtin.unarchive:
-        src: /tmp
-        dest: /tmp/backend.zip
+        src: /tmp/backend.zip
+        dest: /app
         remote_src: yes
 
     - name: install npm dependencies 
