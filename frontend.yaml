@@ -19,15 +19,15 @@
     - name: Download the frontend
       ansible.builtin.get_url:
         url: https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip
-        dest: /tmp
+        dest: /usr/share/nginx/html
 
     - name: change directory 
       ansible.builtin.command: cd /usr/share/nginx/html
 
     - name: unzip 
       ansible.builtin.unarchive:
-        src: /tmp
-        dest: /tmp/frontend.zip
+        src: /usr/share/nginx/html
+        dest: /usr/share/nginx/html
         remote_src: yes
 
     - name: copying service
